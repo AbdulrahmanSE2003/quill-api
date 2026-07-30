@@ -7,6 +7,8 @@ import cors from "cors";
 
 // src/app.ts
 import morgan from "morgan";
+import { errorMiddleware } from "./middleware/error.middleware";
+import { AppError } from "./utils/appError";
 
 const app = express();
 
@@ -19,7 +21,6 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 // 2. Sanitize user input to prevent NoSQL Query Injection attacks
-app.use(rateLimit());
 
 // 3. Limit repeated requests to public APIs / endpoints
 const limiter = rateLimit({
@@ -34,6 +35,7 @@ app.use("/api/", limiter);
 
 // ─── Standard Middleware ──────────────────────────────────────────────────────
 app.use(express.json({ limit: "10kb" })); // Body parser with payload limit protection
+app.use(mongoSanitize());
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
 app.use(
@@ -49,5 +51,10 @@ app.get("/api/v1/health", (req, res) => {
 });
 
 // app.use("/api/v1/", routes)
+
+app.use((req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl}`, 404));
+});
+app.use(errorMiddleware);
 
 export default app;
