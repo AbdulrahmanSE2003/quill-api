@@ -9,6 +9,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { errorMiddleware } from "./middleware/error.middleware";
 import { AppError } from "./utils/appError";
+import authRoutes from "./routes/auth.routes";
 
 const app = express();
 
@@ -50,7 +51,7 @@ app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
 
-// app.use("/api/v1/", routes)
+app.use("/api/v1/auth", authRoutes);
 
 app.use((req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
