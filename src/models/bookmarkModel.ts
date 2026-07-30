@@ -1,25 +1,25 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-export interface IBookmarkMOde extends Document {
+export interface IBookmarkModel extends Document {
   userId: Types.ObjectId;
   bookId: Types.ObjectId;
-  chunkIndex: Types.ObjectId;
+  chunkIndex: number;
 }
 
-const bookmarkModeSchema = new Schema<IBookmarkMOde>({
+const BookmarkModelSchema = new Schema<IBookmarkModel>({
   userId: { type: Schema.ObjectId, ref: "User", required: true },
   bookId: { type: Schema.ObjectId, ref: "Book", required: true },
-  chunkIndex: { type: Schema.ObjectId, ref: "BookChunk", required: true },
+  chunkIndex: { type: Number, required: true },
 });
 
-bookmarkModeSchema.index(
+bookmarkModelSchema.index(
   { userId: 1, bookId: 1, chunkIndex: 1 },
   { unique: true },
 );
 
-const BookmarkMOde = mongoose.model<IBookmarkMOde>(
+const BookmarkModel = mongoose.model<IBookmarkModel>(
   "BookmarkMOde",
-  bookmarkModeSchema,
+  bookmarkModelSchema,
 );
 
-export default BookmarkMOde;
+export default BookmarkModel;
