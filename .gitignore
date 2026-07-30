@@ -1,0 +1,24 @@
+# Dependency directories
+node_modules/
+**/node_modules/
+jspm_packages/
+
+# Production build output
+dist/
+build/
+
+# Local configuration files and environment variables
+.env
+.env.local
+*.env
+
+# Debug logs
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor files & OS metadata
+.idea/
+.vscode/
+*.sw?
+.DS_Store
+Thumbs.db
