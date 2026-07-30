@@ -73,6 +73,9 @@ export const login = async (
     );
   }
 
+  user.lastSignIn = new Date();
+  await user.save({ validateBeforeSave: false });
+
   const accessToken = generateAccessToken(user.id);
   const refreshToken = generateRefreshToken(user.id);
 
@@ -139,4 +142,17 @@ export const getMe = async (req: Request, res: Response) => {
     status: "success",
     data: { user },
   });
+};
+
+export const googleCallback = async (req: Request, res: Response) => {
+  const user = (req as any).user;
+
+  const accessToken = generateAccessToken(user.id);
+  const refreshToken = generateRefreshToken(user.id);
+
+  setRefreshTokenCookie(res, refreshToken);
+
+  res.redirect(
+    `${process.env.CLIENT_URL}/auth/callback?accessToken=${accessToken}&refreshToken=${refreshToken}`,
+  );
 };

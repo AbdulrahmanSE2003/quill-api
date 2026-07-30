@@ -42,14 +42,18 @@ const userSchema = new Schema<IUser>(
     },
     password: {
       type: String,
-      required: [true, "Please provide your password."],
+      required: function (this: IUser) {
+        return !this.googleId; // required بس لو مش Google user
+      },
       minLength: [8, "Password must be at least 8 characters."],
       select: false,
     },
 
     passwordConfirm: {
       type: String,
-      required: [true, "Please confirm your password."],
+      required: function (this: IUser) {
+        return !this.googleId;
+      },
       validate: {
         validator: function (this: any, el: string) {
           return el === this.password;
