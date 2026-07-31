@@ -10,6 +10,7 @@ import passport from "passport";
 import { errorMiddleware } from "./middleware/error.middleware";
 import { AppError } from "./utils/appError";
 import authRoutes from "./routes/auth.routes";
+import bookRoutes from "./routes/book.routes";
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.get("/api/v1/health", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/books", bookRoutes);
 
 // Handle 404s
 app.use((req, res, next) => {

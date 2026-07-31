@@ -6,7 +6,7 @@ export interface IBookmarkModel extends Document {
   chunkIndex: number;
 }
 
-const BookmarkModelSchema = new Schema<IBookmarkModel>({
+const bookmarkModelSchema = new Schema<IBookmarkModel>({
   userId: { type: Schema.ObjectId, ref: "User", required: true },
   bookId: { type: Schema.ObjectId, ref: "Book", required: true },
   chunkIndex: { type: Number, required: true },

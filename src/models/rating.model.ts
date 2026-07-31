@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
-import Book from "./bookModel";
+import Book from "./book.model";
 
 export interface IRating extends Document {
   userId: Types.ObjectId;
