@@ -1,4 +1,11 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
+import BookChunk from "./bookChunk.model";
+import Rating from "./rating.model";
+import Wishlist from "./wishlist.model";
+import Progress from "./progress.model";
+import Quote from "./quote.model";
+import ReadingStats from "./readingStats.model";
+import BookmarkModel from "./bookmark.model";
 
 export interface IBook extends Document {
   _id: Types.ObjectId;
@@ -36,6 +43,24 @@ const bookSchema = new Schema<IBook>(
     isPublic: { type: Boolean, default: true },
   },
   { timestamps: true },
+);
+
+bookSchema.pre(
+  "deleteOne",
+  { document: true, query: false },
+  async function () {
+    const bookId = this._id;
+
+    await Promise.all([
+      BookChunk.deleteMany({ bookId }),
+      Rating.deleteMany({ bookId }),
+      Wishlist.deleteMany({ bookId }),
+      Progress.deleteMany({ bookId }),
+      ReadingStats.deleteMany({ bookId }),
+      Quote.deleteMany({ bookId }),
+      BookmarkModel.deleteMany({ bookId }),
+    ]);
+  },
 );
 
 const Book = mongoose.model<IBook>("Book", bookSchema);

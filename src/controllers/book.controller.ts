@@ -7,6 +7,9 @@ import { chunkText } from "../utils/chunkText";
 import { uploadBufferToCloudinary } from "../utils/uploadToCloudinary";
 import Rating from "../models/rating.model";
 import Progress from "../models/progress.model";
+import { updateStreak } from "../utils/updateStreak";
+import Wishlist from "../models/wishlist.model";
+import ReadingStats from "../models/readingStats.model";
 
 // ─── Admin: Upload Book ───────────────────────────────────────────────────────
 export const uploadBook = async (
@@ -127,13 +130,6 @@ export const deleteBook = async (
   const book = await Book.findById(req.params.id);
   if (!book) return next(new AppError("Book not found.", 404));
 
-  // امسح الـchunks مع الكتاب
-  await BookChunk.deleteMany({ bookId: book._id });
-  await book.deleteOne();
-  await Rating.deleteMany({
-    bookId: book._id,
-  });
-
   res.status(204).json({ status: "success", data: null });
 };
 
@@ -166,7 +162,7 @@ export const getChunk = async (
 
   const isFinished = currentIndex === book.totalChunks - 1;
 
-  const progress = await Progress.findOneAndUpdate(
+  await Progress.findOneAndUpdate(
     { userId: req.user._id, bookId: id },
     {
       currentChunkIndex: currentIndex,
@@ -175,7 +171,7 @@ export const getChunk = async (
     },
     { upsert: true, new: true },
   );
-  console.log(progress);
+  await updateStreak(req.user._id.toString());
 
   res.status(200).json({
     status: "success",
