@@ -16,6 +16,9 @@ export const addBookmark = async (
   const book = await Book.findById(req.params.bookId);
   if (!book) return next(new AppError("Book not found.", 404));
 
+  if (chunkIndex > book.totalChunks)
+    return next(new AppError("Bookmark not valid.", 400));
+
   const existing = await Bookmark.findOne({
     userId: req.user._id,
     bookId: req.params.bookId,

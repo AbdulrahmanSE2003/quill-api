@@ -16,7 +16,6 @@ authRoutes.post("/register", register);
 authRoutes.post("/login", login);
 authRoutes.post("/refresh", refreshToken);
 authRoutes.post("/logout", logout);
-authRoutes.get("/me", protect, getMe);
 
 authRoutes.get(
   "/google",

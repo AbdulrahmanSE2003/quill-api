@@ -166,7 +166,7 @@ export const getChunk = async (
 
   const isFinished = currentIndex === book.totalChunks - 1;
 
-  await Progress.findOneAndUpdate(
+  const progress = await Progress.findOneAndUpdate(
     { userId: req.user._id, bookId: id },
     {
       currentChunkIndex: currentIndex,
@@ -175,6 +175,7 @@ export const getChunk = async (
     },
     { upsert: true, new: true },
   );
+  console.log(progress);
 
   res.status(200).json({
     status: "success",

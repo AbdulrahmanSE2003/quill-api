@@ -1,4 +1,4 @@
-export const chunkText = (text: string, chunkSize = 500): string[] => {
+export const chunkText = (text: string, chunkSize = 1000): string[] => {
   const words = text.split(/\s+/).filter(Boolean);
   const chunks: string[] = [];
 

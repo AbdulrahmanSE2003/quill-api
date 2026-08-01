@@ -16,6 +16,8 @@ import readingRoutes from "./routes/reading.routes";
 import wishlistRoutes from "./routes/wishlist.routes";
 import quoteRoutes from "./routes/quote.routes";
 import bookmarkRoutes from "./routes/bookmark.routes";
+import ratingRoutes from "./routes/rating.routes";
+import statsRoutes from "./routes/stats.routes";
 
 const app = express();
 
@@ -74,6 +76,8 @@ app.use("/api/v1/reading", readingRoutes);
 app.use("/api/v1/wishlist", wishlistRoutes);
 app.use("/api/v1/quotes", quoteRoutes);
 app.use("/api/v1/bookmarks", bookmarkRoutes);
+app.use("/api/v1/ratings", ratingRoutes);
+app.use("/api/v1/stats", statsRoutes);
 
 // Handle 404s
 app.use((req, res, next) => {
