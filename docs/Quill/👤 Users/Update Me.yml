@@ -1,0 +1,23 @@
+info:
+  name: Update Me
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{URL}}/users/me"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Abdo Updated"
+      }
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,23 @@
+info:
+  name: Rate Book
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{URL}}/ratings/6a6d2e8f5cbbb2c9192c136f"
+  body:
+    type: json
+    data: |-
+      {
+        "rating": 4
+      }
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,17 @@
+info:
+  name: Delete Bookmark
+  type: http
+  seq: 3
+
+http:
+  method: DELETE
+  url: "{{URL}}/bookmarks/6a6d3e4ab7163d7e42405a94"
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

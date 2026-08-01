@@ -1,0 +1,997 @@
+{
+  "info": {
+    "name": "Quill",
+    "description": null,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "🔐 Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/auth/register",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\":\"abdo\",\n  \"email\":\"abdo@gmail.com\",\n  \"password\":\"pass1234\",\n  \"passwordConfirm\":\"pass1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/auth/login",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\":\"admin@gmail.com\",\n  \"password\":\"pass1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👤 Users",
+      "item": [
+        {
+          "name": "Get Me",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/users/me",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Delete Me",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/users/me",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Update Me",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/users/me",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Abdo Updated\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{ADMIN_TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/users",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📚 Books",
+      "item": [
+        {
+          "name": "Upload Book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{ADMIN_TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/books",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "books"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "",
+                  "value": "فاتتني صلاة"
+                },
+                {
+                  "key": "author",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "",
+                  "value": "Islam Gamal"
+                },
+                {
+                  "key": "description",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "",
+                  "value": "كتاب \" فاتتني صلاة \" من تأليف الكاتب \" اسلام جمال \" كتاب موجه خاصة لمن لا يصلون و يتهاونون على الصلاة في هذا الكتاب سوف تجد أحسن الطرق للمواظبة عليها لأننا نعلم بأن الصلاة هي السبيل للسعادة و الطمأنينة.."
+                },
+                {
+                  "key": "language",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "",
+                  "value": "ar"
+                },
+                {
+                  "key": "categories",
+                  "disabled": false,
+                  "type": "text",
+                  "description": "",
+                  "value": "[\"soul\", \"islamic\" ]"
+                },
+                {
+                  "key": "cover",
+                  "disabled": false,
+                  "type": "file",
+                  "description": "",
+                  "src": "/home/abdo/Downloads/628dd2af4d6b8931be3c95aedc4e5ed9.png.webp",
+                  "contentType": "image/webp"
+                },
+                {
+                  "key": "pdf",
+                  "disabled": false,
+                  "type": "file",
+                  "description": "",
+                  "src": "/home/abdo/Downloads/Noor-Book.com  فاتتنى صلاة.pdf",
+                  "contentType": "application/pdf"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/books",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "books"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get Book",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/books/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "books",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get Book Chunk",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/books/6a6d2e8f5cbbb2c9192c136f/chunks/2",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "books",
+                "6a6d2e8f5cbbb2c9192c136f",
+                "chunks",
+                "2"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Download Book",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/books/6a6d2e8f5cbbb2c9192c136f/download",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "books",
+                "6a6d2e8f5cbbb2c9192c136f",
+                "download"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏃🏻 Reading Progress ",
+      "item": [
+        {
+          "name": "Get Progress",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/reading/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "reading",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Toggle Favourite",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/reading/6a6d2e8f5cbbb2c9192c136f/favourite",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "reading",
+                "6a6d2e8f5cbbb2c9192c136f",
+                "favourite"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🫶🏻 Wishlist",
+      "item": [
+        {
+          "name": "Get my wishlist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/wishlist/",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "wishlist",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Add to wishlist",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/wishlist/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "wishlist",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Remove from wishlist",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/wishlist/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "wishlist",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🗨️ Quotes",
+      "item": [
+        {
+          "name": "Get my Quotes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/quotes/",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "quotes",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get Book Quotes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/quotes/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "quotes",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Add Quote",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/quotes/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "quotes",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"وهكذا مئات الأعذار التي تعزلني عن الصلاة.\",\n  \"chunkIndex\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Quote",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/quotes/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "quotes",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔖 Bookmarks",
+      "item": [
+        {
+          "name": "Get Book  Bookmarks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/bookmarks/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "bookmarks",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Add Bookmark",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/bookmarks/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "bookmarks",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chunkIndex\": 7\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Bookmark",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/bookmarks/6a6d3e4ab7163d7e42405a94",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "bookmarks",
+                "6a6d3e4ab7163d7e42405a94"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "⭐ Rating",
+      "item": [
+        {
+          "name": "Get Book Rating",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/ratings/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "ratings",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Rate Book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/ratings/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "ratings",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Book Rating",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/ratings/6a6d2e8f5cbbb2c9192c136f",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "ratings",
+                "6a6d2e8f5cbbb2c9192c136f"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Stats",
+      "item": [
+        {
+          "name": "Log Session",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/stats/session",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "stats",
+                "session"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookId\": \"6a6d2e8f5cbbb2c9192c136f\",\n  \"minutesRead\": 15,\n  \"chunksRead\": 3,\n  \"wordsRead\": 1500,\n  \"pagesRead\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get My Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "{{TOKEN}}",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "{{URL}}/stats?period=week",
+              "protocol": "",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "stats?period=week"
+              ],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "week"
+                }
+              ],
+              "variable": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "URL",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "ADMIN_TOKEN",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "TOKEN",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

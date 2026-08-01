@@ -1,0 +1,17 @@
+info:
+  name: Get Book Chunk
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{URL}}/books/6a6d2e8f5cbbb2c9192c136f/chunks/2"
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

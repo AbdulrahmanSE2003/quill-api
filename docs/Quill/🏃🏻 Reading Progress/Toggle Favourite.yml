@@ -1,0 +1,17 @@
+info:
+  name: Toggle Favourite
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{URL}}/reading/6a6d2e8f5cbbb2c9192c136f/favourite"
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

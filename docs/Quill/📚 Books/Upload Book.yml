@@ -1,0 +1,45 @@
+info:
+  name: Upload Book
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{URL}}/books"
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: فاتتني صلاة
+      - name: author
+        type: text
+        value: Islam Gamal
+      - name: description
+        type: text
+        value: كتاب " فاتتني صلاة " من تأليف الكاتب " اسلام جمال " كتاب موجه خاصة لمن لا يصلون و يتهاونون على الصلاة في هذا الكتاب سوف تجد أحسن الطرق للمواظبة عليها لأننا نعلم بأن الصلاة هي السبيل للسعادة و الطمأنينة..
+      - name: language
+        type: text
+        value: ar
+      - name: categories
+        type: text
+        value: '["soul", "islamic" ]'
+      - name: cover
+        type: file
+        value:
+          - /home/abdo/Downloads/628dd2af4d6b8931be3c95aedc4e5ed9.png.webp
+        contentType: image/webp
+      - name: pdf
+        type: file
+        value:
+          - /home/abdo/Downloads/Noor-Book.com  فاتتنى صلاة.pdf
+        contentType: application/pdf
+  auth:
+    type: bearer
+    token: "{{ADMIN_TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

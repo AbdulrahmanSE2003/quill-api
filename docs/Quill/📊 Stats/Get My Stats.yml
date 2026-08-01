@@ -1,0 +1,21 @@
+info:
+  name: Get My Stats
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{URL}}/stats?period=week"
+  params:
+    - name: period
+      value: week
+      type: query
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

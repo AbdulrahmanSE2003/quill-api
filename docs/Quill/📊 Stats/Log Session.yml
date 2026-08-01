@@ -1,0 +1,27 @@
+info:
+  name: Log Session
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{URL}}/stats/session"
+  body:
+    type: json
+    data: |-
+      {
+        "bookId": "6a6d2e8f5cbbb2c9192c136f",
+        "minutesRead": 15,
+        "chunksRead": 3,
+        "wordsRead": 1500,
+        "pagesRead": 5
+      }
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
