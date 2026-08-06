@@ -11,6 +11,8 @@ export interface IBook extends Document {
   _id: Types.ObjectId;
   title: string;
   author: string;
+  forWho: string;
+  brief:string;
   coverImage: string;
   description: string;
   language: string;
@@ -27,6 +29,8 @@ const bookSchema = new Schema<IBook>(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
+    forWho: String,
+    brief: String,
     coverImage: { type: String, required: true },
     description: { type: String, required: true },
     language: { type: String, required: true },
