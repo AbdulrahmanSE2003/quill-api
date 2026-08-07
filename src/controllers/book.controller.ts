@@ -1,16 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import Book from "../models/book.model";
+import Progress from "../models/progress.model";
 import BookChunk from "../models/bookChunk.model";
 import { AppError } from "../utils/appError";
-import { extractTextFromPDF } from "../utils/pdfExtractor";
 import { chunkText } from "../utils/chunkText";
-import { uploadBufferToCloudinary } from "../utils/uploadToCloudinary";
-import Rating from "../models/rating.model";
-import Progress from "../models/progress.model";
 import { updateStreak } from "../utils/updateStreak";
-import Wishlist from "../models/wishlist.model";
-import ReadingStats from "../models/readingStats.model";
-
+import { extractTextFromPDF } from "../utils/pdfExtractor";
+import { uploadBufferToCloudinary } from "../utils/uploadToCloudinary";
 // ─── Admin: Upload Book ───────────────────────────────────────────────────────
 export const uploadBook = async (
   req: Request,
@@ -24,7 +20,21 @@ export const uploadBook = async (
   if (!files?.cover?.[0])
     return next(new AppError("Cover image is required.", 400));
 
-  const { title, author, description, language, categories } = req.body;
+  const { title, author, description, language, categories, forWho, brief } =
+    req.body;
+
+  if (
+    !title ||
+    !author ||
+    !description ||
+    !language ||
+    !categories ||
+    !forWho ||
+    !brief
+  )
+    return next(
+      new AppError("Invalid operation, please provide needed fields.", 400),
+    );
 
   const coverUrl = await uploadBufferToCloudinary(
     files.cover[0].buffer,
@@ -41,6 +51,8 @@ export const uploadBook = async (
     author,
     coverImage: coverUrl,
     description,
+    brief,
+    forWho,
     language: language || "en",
     categories: categories ? JSON.parse(categories) : [],
     totalChunks: chunks.length,
